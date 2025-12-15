@@ -7,6 +7,9 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
+import mongoose from 'mongoose';
+import authRoutes from './routes/auth.js';
+import historyRoutes from './routes/history.js';
 
 // Load environment variables from .env file
 dotenv.config();
@@ -22,6 +25,11 @@ const uploadsDir = path.join(__dirname, '..', 'uploads');
 if (!fs.existsSync(uploadsDir)) {
     fs.mkdirSync(uploadsDir, { recursive: true });
 }
+
+// Connect to MongoDB
+mongoose.connect(process.env.MONGODB_URI)
+    .then(() => console.log('📦 MongoDB connected successfully'))
+    .catch((err) => console.error('❌ MongoDB connection error:', err));
 
 // Middleware
 app.use(cors());
@@ -54,6 +62,10 @@ if (!apiKey || apiKey === 'YOUR_API_KEY_HERE' || apiKey === 'your_api_key_here')
 
 // Initialize Gemini AI
 const genAI = new GoogleGenerativeAI(apiKey || 'YOUR_API_KEY_HERE');
+
+// API Routes
+app.use('/api/auth', authRoutes);
+app.use('/api/history', historyRoutes);
 
 // API endpoint to process PDF
 app.post('/api/process-pdf', upload.single('pdf'), async (req, res) => {

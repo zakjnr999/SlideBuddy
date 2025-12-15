@@ -1,6 +1,6 @@
 import './Header.css'
 
-function Header({ currentPage, setCurrentPage }) {
+function Header({ currentPage, setCurrentPage, user, onShowAuth, onLogout }) {
     const handleNavClick = (page) => {
         setCurrentPage(page)
     }
@@ -36,6 +36,19 @@ function Header({ currentPage, setCurrentPage }) {
                     >
                         About
                     </button>
+
+                    {user ? (
+                        <div className="user-menu">
+                            <span className="user-name">👋 {user.name}</span>
+                            <button onClick={onLogout} className="logout-btn">
+                                Logout
+                            </button>
+                        </div>
+                    ) : (
+                        <button onClick={onShowAuth} className="signin-btn">
+                            Sign In
+                        </button>
+                    )}
                 </nav>
             </div>
         </header>

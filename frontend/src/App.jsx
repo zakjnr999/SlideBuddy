@@ -1,16 +1,39 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import FileUpload from './components/FileUpload'
 import Results from './components/Results'
 import Header from './components/Header'
 import Features from './components/Features'
 import About from './components/About'
+import Auth from './components/Auth'
 
 function App() {
     const [results, setResults] = useState(null)
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(null)
     const [currentPage, setCurrentPage] = useState('home')
+    const [user, setUser] = useState(null)
+    const [showAuth, setShowAuth] = useState(false)
+
+    // Check for existing auth token on mount
+    useEffect(() => {
+        const token = localStorage.getItem('token')
+        const savedUser = localStorage.getItem('user')
+        if (token && savedUser) {
+            setUser(JSON.parse(savedUser))
+        }
+    }, [])
+
+    const handleAuthSuccess = (userData) => {
+        setUser(userData)
+    }
+
+    const handleLogout = () => {
+        localStorage.removeItem('token')
+        localStorage.removeItem('user')
+        setUser(null)
+        setCurrentPage('home')
+    }
 
     const handleFileUpload = async (file) => {
         setLoading(true)
@@ -46,7 +69,13 @@ function App() {
 
     return (
         <div className="app">
-            <Header currentPage={currentPage} setCurrentPage={setCurrentPage} />
+            <Header
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
+                user={user}
+                onShowAuth={() => setShowAuth(true)}
+                onLogout={handleLogout}
+            />
 
             {currentPage === 'home' && (
                 <main className="container">
@@ -95,6 +124,12 @@ function App() {
 
             {currentPage === 'features' && <Features />}
             {currentPage === 'about' && <About />}
+
+            <Auth
+                isOpen={showAuth}
+                onClose={() => setShowAuth(false)}
+                onAuthSuccess={handleAuthSuccess}
+            />
 
             <footer className="footer">
                 <p>Built with ❤️ for students | Powered by Google Gemini AI</p>

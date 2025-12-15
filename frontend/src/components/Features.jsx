@@ -88,7 +88,7 @@ function Features() {
                                 <p>Progress Tracking</p>
                             </div>
                         </div>
-                        <p className="release-note">Expected release: Q1 2025</p>
+                        <p className="release-note">Expected release: 20th January 2026</p>
                     </div>
                 </div>
             </div>
