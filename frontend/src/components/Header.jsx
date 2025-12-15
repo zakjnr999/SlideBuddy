@@ -1,10 +1,14 @@
 import './Header.css'
 
-function Header() {
+function Header({ currentPage, setCurrentPage }) {
+    const handleNavClick = (page) => {
+        setCurrentPage(page)
+    }
+
     return (
         <header className="header">
             <div className="header-content">
-                <div className="logo">
+                <div className="logo" onClick={() => handleNavClick('home')} style={{ cursor: 'pointer' }}>
                     <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
                         <rect width="32" height="32" rx="8" fill="url(#gradient)" />
                         <path d="M16 8L20 12H18V20H14V12H12L16 8Z" fill="white" />
@@ -20,8 +24,18 @@ function Header() {
                 </div>
 
                 <nav className="nav">
-                    <a href="#features" className="nav-link">Features</a>
-                    <a href="#about" className="nav-link">About</a>
+                    <button
+                        onClick={() => handleNavClick('features')}
+                        className={`nav-link ${currentPage === 'features' ? 'active' : ''}`}
+                    >
+                        Features
+                    </button>
+                    <button
+                        onClick={() => handleNavClick('about')}
+                        className={`nav-link ${currentPage === 'about' ? 'active' : ''}`}
+                    >
+                        About
+                    </button>
                 </nav>
             </div>
         </header>

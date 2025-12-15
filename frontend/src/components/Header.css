@@ -42,9 +42,19 @@
     font-weight: 500;
     transition: color 0.3s ease;
     position: relative;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-family: inherit;
+    padding: 0;
 }
 
 .nav-link:hover {
+    color: var(--primary-light);
+}
+
+.nav-link.active {
     color: var(--primary-light);
 }
 
@@ -59,7 +69,8 @@
     transition: width 0.3s ease;
 }
 
-.nav-link:hover::after {
+.nav-link:hover::after,
+.nav-link.active::after {
     width: 100%;
 }
 
