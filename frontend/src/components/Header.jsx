@@ -1,6 +1,6 @@
 import './Header.css'
 
-function Header({ currentPage, setCurrentPage, user, onShowAuth, onLogout }) {
+function Header({ currentPage, setCurrentPage, user, onShowAuth, onLogout, theme, onToggleTheme }) {
     const handleNavClick = (page) => {
         setCurrentPage(page)
     }
@@ -45,6 +45,18 @@ function Header({ currentPage, setCurrentPage, user, onShowAuth, onLogout }) {
                             History
                         </button>
                     )}
+
+                    <button onClick={onToggleTheme} className="theme-toggle" aria-label="Toggle theme">
+                        {theme === 'dark' ? (
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M10 2V4M10 16V18M4 10H2M18 10H16M15.657 4.343L14.243 5.757M5.757 14.243L4.343 15.657M15.657 15.657L14.243 14.243M5.757 5.757L4.343 4.343M13 10C13 11.657 11.657 13 10 13C8.343 13 7 11.657 7 10C7 8.343 8.343 7 10 7C11.657 7 13 8.343 13 10Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        ) : (
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M17 10.5C16.1 13.5 13.4 15.7 10.2 15.7C6.3 15.7 3.1 12.5 3.1 8.6C3.1 5.4 5.3 2.7 8.3 1.8C8.1 2.3 8 2.9 8 3.5C8 6.5 10.5 9 13.5 9C14.1 9 14.7 8.9 15.2 8.7C15.6 9.4 15.9 10.2 16 11C16.3 10.8 16.7 10.6 17 10.5Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        )}
+                    </button>
 
                     {user ? (
                         <div className="user-menu">

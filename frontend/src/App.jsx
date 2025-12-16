@@ -16,6 +16,9 @@ function App() {
     const [user, setUser] = useState(null)
     const [showAuth, setShowAuth] = useState(false)
     const [currentFilename, setCurrentFilename] = useState('')
+    const [theme, setTheme] = useState(() => {
+        return localStorage.getItem('theme') || 'dark'
+    })
 
     useEffect(() => {
         const token = localStorage.getItem('token')
@@ -24,6 +27,15 @@ function App() {
             setUser(JSON.parse(savedUser))
         }
     }, [])
+
+    useEffect(() => {
+        document.documentElement.setAttribute('data-theme', theme)
+        localStorage.setItem('theme', theme)
+    }, [theme])
+
+    const toggleTheme = () => {
+        setTheme(prevTheme => prevTheme === 'dark' ? 'light' : 'dark')
+    }
 
     const handleAuthSuccess = (userData) => {
         setUser(userData)
@@ -99,6 +111,8 @@ function App() {
                 user={user}
                 onShowAuth={() => setShowAuth(true)}
                 onLogout={handleLogout}
+                theme={theme}
+                onToggleTheme={toggleTheme}
             />
 
             {currentPage === 'home' && (
