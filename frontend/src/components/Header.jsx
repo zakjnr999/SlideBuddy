@@ -37,6 +37,15 @@ function Header({ currentPage, setCurrentPage, user, onShowAuth, onLogout }) {
                         About
                     </button>
 
+                    {user && (
+                        <button
+                            onClick={() => handleNavClick('history')}
+                            className={`nav-link ${currentPage === 'history' ? 'active' : ''}`}
+                        >
+                            History
+                        </button>
+                    )}
+
                     {user ? (
                         <div className="user-menu">
                             <span className="user-name">👋 {user.name}</span>

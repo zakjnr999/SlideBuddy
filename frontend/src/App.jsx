@@ -6,6 +6,7 @@ import Header from './components/Header'
 import Features from './components/Features'
 import About from './components/About'
 import Auth from './components/Auth'
+import History from './components/History'
 
 function App() {
     const [results, setResults] = useState(null)
@@ -14,6 +15,7 @@ function App() {
     const [currentPage, setCurrentPage] = useState('home')
     const [user, setUser] = useState(null)
     const [showAuth, setShowAuth] = useState(false)
+    const [currentFilename, setCurrentFilename] = useState('')
 
     // Check for existing auth token on mount
     useEffect(() => {
@@ -39,6 +41,7 @@ function App() {
         setLoading(true)
         setError(null)
         setResults(null)
+        setCurrentFilename(file.name)
 
         const formData = new FormData()
         formData.append('pdf', file)
@@ -55,10 +58,33 @@ function App() {
 
             const data = await response.json()
             setResults(data)
+
+            // Auto-save to history if user is logged in
+            if (user) {
+                await saveToHistory(file.name, data.summary, data.questions)
+            }
         } catch (err) {
             setError(err.message || 'Something went wrong. Please try again.')
         } finally {
             setLoading(false)
+        }
+    }
+
+    const saveToHistory = async (filename, summary, questions) => {
+        try {
+            const token = localStorage.getItem('token')
+            if (!token) return
+
+            await fetch('/api/history', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify({ filename, summary, questions })
+            })
+        } catch (err) {
+            console.error('Error saving to history:', err)
         }
     }
 
@@ -124,6 +150,7 @@ function App() {
 
             {currentPage === 'features' && <Features />}
             {currentPage === 'about' && <About />}
+            {currentPage === 'history' && <History />}
 
             <Auth
                 isOpen={showAuth}
