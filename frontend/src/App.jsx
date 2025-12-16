@@ -17,7 +17,6 @@ function App() {
     const [showAuth, setShowAuth] = useState(false)
     const [currentFilename, setCurrentFilename] = useState('')
 
-    // Check for existing auth token on mount
     useEffect(() => {
         const token = localStorage.getItem('token')
         const savedUser = localStorage.getItem('user')
@@ -59,7 +58,6 @@ function App() {
             const data = await response.json()
             setResults(data)
 
-            // Auto-save to history if user is logged in
             if (user) {
                 await saveToHistory(file.name, data.summary, data.questions)
             }
@@ -109,7 +107,7 @@ function App() {
                         <div className="hero fade-in">
                             <h1 className="hero-title">
                                 Transform Your Study Materials
-                                <span className="gradient-text">with AI</span>
+                                <span className="gradient-text"> with AI</span>
                             </h1>
                             <p className="hero-subtitle">
                                 Upload your lecture slides and get instant summaries, key points, and practice questions
