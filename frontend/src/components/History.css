@@ -33,7 +33,7 @@
 }
 
 .clear-all-btn {
-    background: rgba(239, 68, 68, 0.1);
+    background: var(--error-overlay);
     border: 1px solid rgba(239, 68, 68, 0.3);
     color: #fca5a5;
     padding: 10px 24px;
@@ -44,7 +44,7 @@
 }
 
 .clear-all-btn:hover {
-    background: rgba(239, 68, 68, 0.2);
+    background: var(--error-overlay-hover);
     border-color: rgba(239, 68, 68, 0.5);
 }
 
@@ -78,9 +78,9 @@
 }
 
 .history-card {
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--overlay-light);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border-light);
     border-radius: 16px;
     padding: 24px;
     cursor: pointer;
@@ -90,7 +90,7 @@
 
 .history-card:hover {
     transform: translateY(-4px);
-    background: rgba(255, 255, 255, 0.08);
+    background: var(--overlay-medium);
     border-color: rgba(102, 126, 234, 0.5);
     box-shadow: 0 12px 40px rgba(102, 126, 234, 0.2);
 }
@@ -133,7 +133,7 @@
     justify-content: space-between;
     align-items: center;
     padding-top: 16px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid var(--border-light);
 }
 
 .question-count {
@@ -143,7 +143,7 @@
 }
 
 .delete-btn {
-    background: rgba(239, 68, 68, 0.1);
+    background: var(--error-overlay);
     border: 1px solid rgba(239, 68, 68, 0.3);
     color: #fca5a5;
     padding: 6px 16px;
@@ -155,7 +155,7 @@
 }
 
 .delete-btn:hover {
-    background: rgba(239, 68, 68, 0.2);
+    background: var(--error-overlay-hover);
     border-color: rgba(239, 68, 68, 0.5);
 }
 
@@ -165,7 +165,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.8);
+    background: var(--modal-overlay);
     backdrop-filter: blur(5px);
     display: flex;
     align-items: center;
@@ -240,8 +240,8 @@
 }
 
 .question-item {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--overlay-light);
+    border: 1px solid var(--border-light);
     border-radius: 12px;
     padding: 20px;
     margin-bottom: 16px;

@@ -1,5 +1,5 @@
 .header {
-    background: rgba(30, 41, 59, 0.8);
+    background: var(--surface);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border);
     position: sticky;
@@ -86,8 +86,8 @@
 }
 
 .logout-btn {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: var(--overlay-light);
+    border: 1px solid var(--border-medium);
     color: var(--text-primary);
     padding: 8px 16px;
     border-radius: 8px;
@@ -97,8 +97,8 @@
 }
 
 .logout-btn:hover {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: rgba(255, 255, 255, 0.3);
+    background: var(--overlay-strong);
+    border-color: var(--border-strong);
 }
 
 .signin-btn {
@@ -118,8 +118,8 @@
 }
 
 .theme-toggle {
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--overlay-medium);
+    border: 1px solid var(--border-light);
     color: var(--text-primary);
     padding: 8px;
     border-radius: 8px;
@@ -131,7 +131,7 @@
 }
 
 .theme-toggle:hover {
-    background: rgba(255, 255, 255, 0.15);
+    background: var(--overlay-strong);
     border-color: rgba(102, 126, 234, 0.5);
     transform: translateY(-2px);
 }

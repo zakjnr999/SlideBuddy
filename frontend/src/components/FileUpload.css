@@ -39,7 +39,7 @@
 
 .upload-zone.drag-active {
     border-color: var(--primary);
-    background: rgba(99, 102, 241, 0.1);
+    background: var(--primary-overlay);
 }
 
 .upload-zone.drag-active::before {
@@ -138,7 +138,7 @@
 .button-spinner {
     width: 20px;
     height: 20px;
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    border: 2px solid var(--border-strong);
     border-top-color: white;
     border-radius: 50%;
     animation: spin 0.8s linear infinite;

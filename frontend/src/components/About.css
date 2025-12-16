@@ -38,9 +38,9 @@
 }
 
 .about-section {
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--overlay-light);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border-light);
     border-radius: 16px;
     padding: 40px;
     animation: slideIn 0.6s ease-out backwards;
@@ -184,7 +184,7 @@
     text-align: center;
     margin-top: 60px;
     padding-top: 40px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid var(--border-light);
 }
 
 .about-footer p {

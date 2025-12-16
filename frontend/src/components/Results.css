@@ -90,7 +90,7 @@
 
 .copy-button {
     padding: 0.5rem 1rem;
-    background: rgba(99, 102, 241, 0.1);
+    background: var(--primary-overlay);
     border: 1px solid var(--primary);
     border-radius: 8px;
     color: var(--primary);
@@ -128,7 +128,7 @@
     display: flex;
     gap: 1rem;
     padding: 1.5rem;
-    background: rgba(99, 102, 241, 0.05);
+    background: var(--overlay-light);
     border-radius: 12px;
     border-left: 4px solid var(--primary);
 }
