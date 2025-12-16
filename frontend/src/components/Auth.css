@@ -88,8 +88,8 @@
 }
 
 .form-group input {
-    background: var(--overlay-light);
-    border: 1px solid var(--border-light);
+    background: var(--surface-light);
+    border: 1px solid var(--border);
     border-radius: 12px;
     padding: 14px 16px;
     color: var(--text-primary);
@@ -100,7 +100,7 @@
 .form-group input:focus {
     outline: none;
     border-color: var(--primary);
-    background: var(--overlay-medium);
+    background: var(--surface-light);
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
