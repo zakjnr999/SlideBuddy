@@ -162,10 +162,13 @@
     .file-upload-container {
         max-width: 100%;
         width: 100%;
+        margin: 0;
+        padding: 0;
     }
 
     .upload-zone {
         padding: 2rem 1rem;
+        margin: 0;
     }
 
     .upload-title {
@@ -178,8 +181,14 @@
 }
 
 @media (max-width: 480px) {
+    .file-upload-container {
+        margin: 0;
+        padding: 0;
+    }
+
     .upload-zone {
         padding: 1.5rem 1rem;
+        margin: 0;
     }
 
     .upload-title {
